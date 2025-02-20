@@ -3,6 +3,7 @@ import { View, Text, FlatList, StyleSheet, TouchableOpacity, Alert } from "react
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import RNFS from "react-native-fs";
 import Share from "react-native-share";
+import { FONTS } from "../utils/constant";
 
 const TimerHistoryScreen = () => {
     const [history, setHistory] = useState([]);
@@ -11,7 +12,6 @@ const TimerHistoryScreen = () => {
         loadHistory();
     }, []);
 
-    // 🔹 Load completed timers from AsyncStorage
     const loadHistory = async () => {
         try {
             const savedHistory = await AsyncStorage.getItem("timerHistory");
@@ -23,7 +23,6 @@ const TimerHistoryScreen = () => {
         }
     };
 
-    // 🔹 Export timer history as JSON
     const exportHistory = async () => {
         try {
             if (history.length === 0) {
@@ -63,13 +62,14 @@ const TimerHistoryScreen = () => {
                     renderItem={({ item }) => (
                         <View style={styles.historyItem}>
                             <Text style={styles.timerName}>{item.name}</Text>
-                            <Text>Completed At: {item.completedAt}</Text>
+                            <Text style={{
+                                 fontFamily:FONTS.medium
+                            }}>Completed At: {item.completedAt}</Text>
                         </View>
                     )}
                 />
             )}
 
-            {/* Export Button */}
             {history.length > 0 && (
                 <TouchableOpacity style={styles.exportButton} onPress={exportHistory}>
                     <Text style={styles.exportButtonText}>Export History</Text>
@@ -80,13 +80,13 @@ const TimerHistoryScreen = () => {
 };
 
 const styles = StyleSheet.create({
-    container: { flex: 1, padding: 20, backgroundColor: "#f5f5f5" },
-    title: { fontSize: 22, fontWeight: "bold", marginBottom: 10 },
-    historyItem: { backgroundColor: "#fff", padding: 15, borderRadius: 10, marginVertical: 8, elevation: 2 },
-    timerName: { fontWeight: "bold" },
+    container: { flex: 1, padding: 20, backgroundColor: "white" },
+    title: { fontSize: 22, fontFamily:FONTS.bold, marginBottom: 10 },
+    historyItem: { backgroundColor: "#fff", padding: 15, borderRadius: 10, marginVertical: 8, elevation: 5 },
+    timerName: {  fontFamily:FONTS.bold },
     noHistoryText: { textAlign: "center", marginTop: 20, fontSize: 16, color: "gray" },
     exportButton: { backgroundColor: "green", padding: 10, borderRadius: 5, alignItems: "center", marginTop: 20 },
-    exportButtonText: { color: "#fff", fontWeight: "bold" },
+    exportButtonText: { color: "#fff", fontFamily:FONTS.bold },
 });
 
 export default TimerHistoryScreen;
