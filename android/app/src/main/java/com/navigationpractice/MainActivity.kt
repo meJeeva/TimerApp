@@ -1,4 +1,4 @@
-package com.navigationpractice
+package com.happening
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

@@ -1,28 +1,31 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import TimerScreen from '../screens/TimerScreen'
-import TimerListScreen from '../screens/TimerListScreen'
-import TimerHistoryScreen from '../screens/TimerHistoryScreen'
+import SplashScreen from '../screens/SplashScreen'
+import HomeScreen from '../screens/HomeScreen'
+import LoginScreen from '../screens/LoginScreen'
 
 const Stack = createNativeStackNavigator()
 
 const StackNavigation = () => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{
+            headerShown: false
+        }}>
             <Stack.Screen
-                name='TimerScreen'
-                component={TimerScreen}
+                name='LoginScreen'
+                component={LoginScreen}
+            />
+            <Stack.Screen
+                name='SplashScreen'
+                component={SplashScreen}
                 options={{
                 }}
             />
             <Stack.Screen
-                name='TimerListScreen'
-                component={TimerListScreen}
-                options={{
-                }}
+                name='HomeScreen'
+                component={HomeScreen}
             />
-            <Stack.Screen name="TimerHistory" component={TimerHistoryScreen} />
         </Stack.Navigator>
     )
 }

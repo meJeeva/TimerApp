@@ -4,7 +4,13 @@ const Colors = {
     yellow: 'yellow'
 }
 
+const FONTS = {
+    montserratBold: 'Montserrat-Bold',
+    montserratMedium: 'Montserrat-Medium',
+    montserratSemiBold: 'Montserrat-SemiBold'
+}
 
 export {
-    Colors
+    Colors,
+    FONTS
 }
